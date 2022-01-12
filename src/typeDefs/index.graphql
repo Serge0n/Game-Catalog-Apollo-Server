@@ -1,0 +1,4 @@
+type Query {
+  game(id: Int): Game
+  games(limit: Int, platformId: Int, sortField: String, sortDir: String): [Game]
+}

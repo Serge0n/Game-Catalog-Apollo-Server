@@ -1,6 +1,6 @@
 # Game-Catalog-Apollo-Server
 
-Game-Gatalog is a [Apollo Server](https://www.apollographql.com/docs/apollo-server/)-compliant API that wraps
+Game-Catalog is a [Apollo Server](https://www.apollographql.com/docs/apollo-server/)-compliant API that wraps
 RESTful [IGDB-API](https://api-docs.igdb.com/#about)
 
 ## Getting Setup
@@ -8,11 +8,11 @@ RESTful [IGDB-API](https://api-docs.igdb.com/#about)
 To get yourself set up with all the project's dependencies:
 
 ```sh
-git clone https://github.com/Serge0n/Game-Gatalog-Apollo-Server.git
+git clone https://github.com/Serge0n/Game-Catalog-Apollo-Server.git
 ```
 
 ```sh
-cd Game-Gatalog-Apollo-Server
+cd Game-Catalog-Apollo-Server
 ```
 
 ```sh
@@ -21,7 +21,7 @@ yarn
 
 ### Development
 
-With your dependencies set up, you can run Game-Gatalog-Apollo-Server by running:
+With your dependencies set up, you can run Game-Catalog-Apollo-Server by running:
 
 ```sh
 yarn start

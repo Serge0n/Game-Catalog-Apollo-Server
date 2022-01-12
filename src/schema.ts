@@ -1,64 +1,14 @@
-import { gql } from "apollo-server"
+import { join } from "path"
+import { readdirSync, readFileSync } from "fs"
+import { makeExecutableSchema } from "@graphql-tools/schema"
+import { resolvers } from "./resolvers"
 
-export const typeDefs = gql`
+const gqlFiles = readdirSync(join(__dirname, "./typeDefs"))
 
-  type User {
-    id: ID!
-    email: String!
-    password: String!
-  }
+let typeDefs = ""
 
-  type Game {
-    id: Int
-    name: String
-    release_dates: [ReleaseDate]
-    first_release_date: Int
-    genres: [Genre]
-    age_ratings: [AgeRating]
-    rating: Float
-    total_rating: Float
-    rating_count: Int
-    url: String
-    cover: Cover
-    platforms: [Platform]
-    game_engines: [GameEngine]
-    game_modes: [GameMode]
-  }
+gqlFiles.forEach(file => {
+  typeDefs += readFileSync(join(__dirname, "./typedefs", file), { encoding: "utf8" })
+})
 
-  type AgeRating {
-    category: String
-    rating: String
-  }
-
-  type GameEngine {
-    name: String
-  }
-
-  type GameMode {
-    name: String
-  }
-
-  type Cover {
-    url: String
-  }
-
-  type Platform {
-    id: Int
-    abbreviation: String
-  }
-
-  type Genre {
-    id: Int
-    name: String
-  }
-
-  type ReleaseDate {
-    date: String
-    platform: String
-  }
-
-  type Query {
-    game(id: Int): Game
-    games(limit: Int, platformId: Int, sortField: String, sortDir: String): [Game]
-  }
-`
+export const schema = makeExecutableSchema({ typeDefs, resolvers })
