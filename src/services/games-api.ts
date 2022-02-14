@@ -1,7 +1,8 @@
 import { RequestOptions, RESTDataSource } from "apollo-datasource-rest"
 
 const BASE_URL = "https://api.igdb.com/v4/"
-const GAME_FIELDS = "f name,first_release_date,release_dates.date,release_dates.platform,age_ratings.category,age_ratings.rating,genres.name,game_engines.name,game_modes.name,platforms.abbreviation,cover.url,rating,rating_count,total_rating,url;"
+const GAME_FIELDS = "f name,summary,storyline,screenshots.image_id;"
+const GAMES_FIELDS = "f name,slug,first_release_date,cover.image_id,total_rating,url;"
 
 export class GamesAPI extends RESTDataSource {
   constructor() {
@@ -22,7 +23,7 @@ export class GamesAPI extends RESTDataSource {
   }
 
   async getGames(limit: number, platformId?: number, sortField?: string, sortDir?: string) {
-    const fields = `${GAME_FIELDS} l ${limit};`
+    const fields = `${GAMES_FIELDS} l ${limit};`
     const where = `w rating != null & rating_count > 0 & total_rating > 0 & platforms != null${(platformId ? ` & release_dates.platform = (${platformId}); ` : ";")}`
     const sort = `${((sortField && sortDir) ? `s ${sortField} ${sortDir}; w ${sortField} != null;` : "")}`
     const games = await this.post("games", `${fields} ${where} ${sort}`)

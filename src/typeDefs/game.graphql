@@ -1,48 +1,56 @@
-type Game {
-  id: Int
-  name: String
-  release_dates: [ReleaseDate]
-  first_release_date: Int
-  genres: [Genre]
-  age_ratings: [AgeRating]
-  rating: Float
+interface IGame {
+  id: Int!
+  name: String!
+}
+
+type GameListItem implements IGame {
+  id: Int!
+  name: String!
+  slug: String!
+  first_release_date: Int!
   total_rating: Float
-  rating_count: Int
-  url: String
-  cover: Cover
-  platforms: [Platform]
-  game_engines: [GameEngine]
-  game_modes: [GameMode]
+  cover: Cover!
+}
+
+type Game implements IGame {
+  id: Int!
+  name: String!
+  storyline: String!
+  summary: String!
+  screenshots: [Screenshot]!
 }
 
 type AgeRating {
-  category: String
-  rating: String
+  category: String!
+  rating: String!
 }
 
 type GameEngine {
-  name: String
+  name: String!
 }
 
 type GameMode {
-  name: String
+  name: String!
 }
 
 type Cover {
-  url: String
+  image_id: String!
+}
+type Screenshot {
+  image_id: String!
 }
 
 type Platform {
-  id: Int
-  abbreviation: String
+  id: Int!
+  abbreviation: String!
 }
 
 type Genre {
-  id: Int
-  name: String
+  id: Int!
+  name: String!
 }
 
 type ReleaseDate {
-  date: String
-  platform: String
+  date: String!
+  platform: String!
 }
