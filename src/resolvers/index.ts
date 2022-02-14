@@ -1,7 +1,4 @@
 import { gameResolver } from "./gameResolver"
+import { userResolver } from "./userResolver"
 
-export const resolvers = {
-  Query: {
-    ...gameResolver
-  },
-}
+export const resolvers = [gameResolver, userResolver]
