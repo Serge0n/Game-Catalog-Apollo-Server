@@ -7,9 +7,17 @@
     "start": "nodemon --exec ts-node src/index.ts"
   },
   "dependencies": {
+    "@prisma/client": "^3.9.2",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/uuid": "^8.3.4",
     "apollo-datasource-rest": "^3.5.0",
     "apollo-server": "^3.6.1",
-    "graphql": "^16.2.0"
+    "bcryptjs": "^2.4.3",
+    "graphql": "^16.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "prisma": "^3.9.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.8",
