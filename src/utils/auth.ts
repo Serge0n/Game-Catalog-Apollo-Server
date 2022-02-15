@@ -1,4 +1,4 @@
-import * as jwt from "jsonwebtoken";
+import { verify } from "jsonwebtoken";
 
 export const APP_SECRET = "Game-Catalog"
 
@@ -9,5 +9,5 @@ export function decodeAuthHeader(authHeader: String): AuthTokenPayload {
 
   if (!token) { throw new Error("No token found") }
 
-  return jwt.verify(token, APP_SECRET) as AuthTokenPayload
+  return verify(token, APP_SECRET) as AuthTokenPayload
 }

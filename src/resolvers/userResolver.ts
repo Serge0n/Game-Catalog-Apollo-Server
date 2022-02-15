@@ -1,6 +1,6 @@
-import * as bcrypt from "bcryptjs"
+import { hash } from "bcryptjs"
 import { Context } from "context"
-import * as jwt from "jsonwebtoken"
+import { sign } from "jsonwebtoken"
 import { APP_SECRET } from "../utils/auth"
 
 export const userResolver = {
@@ -13,11 +13,11 @@ export const userResolver = {
   Mutation: {
     signup: async (parent: any, args: any, context: any) => {
       const { email, name } = args;
-      const password = await bcrypt.hash(args.password, 10)
+      const password = await hash(args.password, 10)
       const user = await context.prisma.user.create({
         data: { email, name, password },
     });
-      const token = jwt.sign({ userId: user.id }, APP_SECRET)
+      const token = sign({ userId: user.id }, APP_SECRET)
       
       return { token, user }
     }
