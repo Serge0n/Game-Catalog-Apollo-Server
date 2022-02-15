@@ -1,6 +1,6 @@
 import { verify } from "jsonwebtoken";
 
-export const APP_SECRET = "Game-Catalog"
+export const APP_SECRET = "Game-Catalog-App"
 
 export interface AuthTokenPayload { userId: number }
 
