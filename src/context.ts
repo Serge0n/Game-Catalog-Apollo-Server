@@ -3,7 +3,7 @@ import { decodeAuthHeader } from "./utils/auth"
 import { Request } from "express" 
 
 const CLIEND_ID = "4u0rgxcllhiexenr0wkhyxe5eo5cs6"
-const CLIENT_TOKEN = "Bearer vk93mto6wl5cdsk8bbhwmwrnucwwxk"
+const CLIENT_TOKEN = "Bearer rz4mgzol067y8u3dh7o1px98x2k3qv"
 
 const prisma = new PrismaClient()
 
